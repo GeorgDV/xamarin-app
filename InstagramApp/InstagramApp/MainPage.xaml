@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InstagramApp"
+             xmlns:models="clr-namespace:InstagramApp.Models"
+             xmlns:vm="clr-namespace:InstagramApp.ViewModels"
+             x:Class="InstagramApp.MainPage"
+             BackgroundColor="Aqua">
+
+    <ContentPage.BindingContext>
+        <vm:PostsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Post" Clicked="AddNewPostBtn_Clicked" Icon="plus_icon.png"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+
+    <StackLayout HorizontalOptions="Center">
+        <!-- Place new controls here -->
+        <Label Text="InstagramApp" 
+           VerticalOptions="CenterAndExpand"
+               HorizontalOptions="Center"
+           FontSize="32" FontAttributes="Bold" TextColor="Black"/>
+
+        <ListView x:Name="Posts_ListView"
+                      ItemsSource="{Binding Posts}"
+                      HasUnevenRows="True"
+                      SelectionMode="None">
+
+            <!--Built in Cells-->
+            <!--
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Title}"
+                               Detail="{Binding Date}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            -->
+            <!--Custom View Cells-->
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="10" Padding="10">
+                            <Grid HeightRequest="80" HorizontalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80" ></ColumnDefinition>
+                                    <ColumnDefinition Width="*" ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Column="0"
+                                       CornerRadius="40" 
+                                       HeightRequest="80"
+                                       WidthRequest="80"
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                                    <Image  Source="{Binding UserPhotoPath}" BackgroundColor="WhiteSmoke"></Image>
+                                </Frame>
+                                <Label Grid.Column="1" Text="{Binding UserName}" FontSize="Large" FontAttributes="Bold"
+                                       VerticalOptions="Center"></Label>
+                            </Grid>
+                            <Label x:Name="PostTitle" Text="{Binding Title}" 
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   HorizontalOptions="Center"
+                                   FontSize="26" FontAttributes="Bold"/>
+                            <Label Text="{Binding Date}" 
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   HorizontalOptions="Center"
+                                   FontSize="16"/>
+                            <Image Source="{Binding ImgPath}"
+                                   HorizontalOptions="Center">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PostImage_Tapped"></TapGestureRecognizer>
+                                    <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="PostImage_DoubleTapped"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+
+                            <Grid HeightRequest="60" HorizontalOptions="Start">
+                                <Grid.ColumnDefinitions VerticalOptions="Center">
+                                    <ColumnDefinition Width="140"></ColumnDefinition>
+                                    <ColumnDefinition Width="60" ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Grid.Column="0" 
+                                       CornerRadius="30" 
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                                    <StackLayout BackgroundColor="SkyBlue">
+                                        <Grid HeightRequest="60" HorizontalOptions="Start">
+                                            <Grid.ColumnDefinitions VerticalOptions="Center">
+                                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                                <ColumnDefinition Width="*" ></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Frame Grid.Column="0"
+                                                   CornerRadius="30" 
+                                                   HeightRequest="60"
+                                                   WidthRequest="60"
+                                                   Padding="0"
+                                                   IsClippedToBounds="True">
+                                                <ImageButton x:Name="LikePost_Button" Source="like_icon_2.png" Clicked="LikePost_Button_Clicked" BackgroundColor="DeepSkyBlue"></ImageButton>
+                                            </Frame>
+                                            <Label Grid.Column="1"
+                                                   FontSize="Large" FontAttributes="Bold" Text="{Binding LikeCount}" TextColor="Black"
+                                                   VerticalOptions="Center" HorizontalTextAlignment="End">
+                                            </Label>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+
+
+                                <Frame Grid.Column="1"
+                                       CornerRadius="30" 
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                                    <ImageButton x:Name="CommentPost_Button" Source="comment_icon.png" Clicked="CommentPost_Button_Clicked" BackgroundColor="DeepSkyBlue"></ImageButton>
+                                </Frame>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

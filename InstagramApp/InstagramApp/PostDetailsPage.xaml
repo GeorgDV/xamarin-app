@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="InstagramApp.PostDetailsPage"
+             xmlns:vm="clr-namespace:InstagramApp.ViewModels"
+             BackgroundColor="Aqua">
+    <ContentPage.Content>
+        <ScrollView WidthRequest="600" HorizontalOptions="Center">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Start" Padding="20">
+                <Grid HeightRequest="100" VerticalOptions="Center" HorizontalOptions="Start">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" ></ColumnDefinition>
+                        <ColumnDefinition Width="*" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="0"
+                                       CornerRadius="50" 
+                                       HeightRequest="100"
+                                       WidthRequest="100"
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                        <Image  Source="{Binding UserPhotoPath}" BackgroundColor="WhiteSmoke"></Image>
+                    </Frame>
+                    <Label Grid.Column="1" Text="{Binding UserName}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center"></Label>
+                </Grid>
+
+                <Label Text="{Binding Title}" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   FontSize="26" FontAttributes="Bold" TextColor="Black"/>
+
+                <Label Text="{Binding Date}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   FontSize="20"></Label>
+
+                <Image Source="{Binding ImgPath}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   WidthRequest="600" HeightRequest="600"></Image>
+                
+                <!--MAY USE THIS FOR COMMENTS-->
+                <!--
+                <ListView x:Name="Comments_ListView"
+                          ItemsSource="{Binding Comments}"
+                          HeightRequest="200"
+                          SelectionMode="None"
+                          BackgroundColor="WhiteSmoke">
+
+                    <ListView.BindingContext>
+                        <vm:CommentsViewModel></vm:CommentsViewModel>
+                    </ListView.BindingContext>
+                    
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Content}"
+                                      Detail="{Binding Date}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                -->
+
+
+                <Button x:Name="DeletePostBtn" Text="Delete This Post" Clicked="DeletePostBtn_Clicked" BackgroundColor="DeepSkyBlue"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

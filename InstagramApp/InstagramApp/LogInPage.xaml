@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="InstagramApp.LogInPage">
+    
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium"></Setter>
+            <Setter Property="BackgroundColor" Value="SkyBlue"></Setter>
+            <Setter Property="TextColor" Value="Black"></Setter>
+            <Setter Property="CornerRadius" Value="10"></Setter>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="Medium"></Setter>
+            <Setter Property="BackgroundColor" Value="White"></Setter>
+            <Setter Property="TextColor" Value="Black"></Setter>
+        </Style>
+
+        <Style TargetType="StackLayout">
+
+        </Style>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     Padding="25">
+            <!-- Place new controls here -->
+            <Label Text="InstagramApp" FontAttributes="Bold" FontSize="40" HorizontalOptions="Center" />
+            <Label Text="Please Login or Sign Up" FontSize="Large"/>
+
+            <Label x:Name="OutputLabel" Text="" FontSize="Small"/>
+
+            <Entry x:Name="UserNameEntry" Placeholder="Enter your username" Text=""></Entry>
+            <Entry x:Name="PasswordEntry" Placeholder="Enter your password" IsPassword="True" Text=""></Entry>
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" x:Name="LoginBtn" Text="Login" Clicked="LoginBtn_Clicked"></Button>
+                <Button Grid.Column="1" x:Name="SignUpBtn" Text="Sign Up" Clicked="SignUpBtn_Clicked"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InstagramApp.AddPostPage"
+             BackgroundColor="Aqua">
+    
+    <ContentPage.Content>
+        <ScrollView WidthRequest="500" HorizontalOptions="Center">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="StartAndExpand">
+                <Label Text="Add Post" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="StartAndExpand"
+                   FontSize="32" FontAttributes="Bold" TextColor="Black"/>
+                <Label x:Name="ErrorLabel" FontSize="20" TextColor="Black"></Label>
+
+                <Entry x:Name="PostTitleEntry" Text="" Placeholder="Enter Post Title" FontSize="20" FontAttributes="Bold"></Entry>
+                <Button Text="Take Picture" x:Name="TakePictureBtn" Clicked="TakePictureBtn_Clicked" BackgroundColor="DeepSkyBlue"></Button>
+                <Image x:Name="PhotoImage" Source="" WidthRequest="500" HeightRequest="500" BackgroundColor="WhiteSmoke" />
+
+                <Button Text="Save Post" x:Name="SavePostBtn" Clicked="SavePostBtn_Clicked" BackgroundColor="DeepSkyBlue"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

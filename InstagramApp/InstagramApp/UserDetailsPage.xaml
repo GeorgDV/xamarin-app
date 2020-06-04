@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="InstagramApp.UserDetailsPage"
+             BackgroundColor="Aqua">
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium"></Setter>
+            <Setter Property="BackgroundColor" Value="SkyBlue"></Setter>
+            <Setter Property="TextColor" Value="Black"></Setter>
+            <Setter Property="CornerRadius" Value="10"></Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Label x:Name="UserName" Text="{Binding UserName}" TextColor="Black" 
+                       VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                       FontAttributes="Bold" FontSize="Large"/>
+                <Grid HeightRequest="150" HorizontalOptions="Center">
+                    <Grid.ColumnDefinitions VerticalOptions="Start">
+                        <ColumnDefinition Width="150" ></ColumnDefinition>
+                        <ColumnDefinition Width="*" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="0"
+                           CornerRadius="75" 
+                           HeightRequest="150"
+                           WidthRequest="150"
+                           Padding="0"
+                           IsClippedToBounds="True">
+                        <Image x:Name="ProfilePhoto" Source="{Binding ProfilePhotoPath}" WidthRequest="150" HeightRequest="150" BackgroundColor="WhiteSmoke"
+                               />
+                    </Frame>
+                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Edit Username:" FontSize="20" WidthRequest="300"/>
+                        <Entry x:Name="UserNameEntry" Text="{Binding UserName}" WidthRequest="300" Placeholder="Change Username" 
+                               FontSize="20" FontAttributes="Bold" ></Entry>
+                    </StackLayout>
+                </Grid>
+                
+                <StackLayout HorizontalOptions="Center" VerticalOptions="End" WidthRequest="450" Margin="0, 150, 0, 0">
+
+                    <Button Text="Take New Profile Picture" x:Name="TakePictureBtn" Clicked="TakePictureBtn_Clicked" 
+                            BackgroundColor="DeepSkyBlue"></Button>
+                    <Button Text="Save Profile" x:Name="SaveProfileBtn" Clicked="SaveProfileBtn_Clicked" 
+                            BackgroundColor="DeepSkyBlue"></Button>
+                    <Label x:Name="ErrorOutput" Text="" FontSize="Small" VerticalOptions="End"/>
+
+                    <Button x:Name="DeleteBtn" Text="Delete my user from db" Clicked="DeleteBtn_Clicked"
+                            ></Button>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
